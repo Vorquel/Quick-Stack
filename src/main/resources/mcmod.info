@@ -1,0 +1,21 @@
+[
+{
+  "modid": "QuickStack",
+  "name": "Quick Stack",
+  "description": "Now you can quick stack to chests like Terraria!",
+  "version": "${modVersion}",
+  "mcversion": "${mcVersion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "Vorquel"
+  ],
+  "credits": "Thanks to all my fans and sponsors.",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent": "",
+  "dependencies": [
+  ]
+}
+]

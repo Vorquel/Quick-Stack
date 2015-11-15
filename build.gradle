@@ -2,7 +2,10 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 
-version = "0.1.0"
+def mcVersion = "1.8.0"
+def modVersion = "0.1.0"
+
+version = mcVersion + '-' + modVersion
 group = "vorquel.mod.quickstack"
 archivesBaseName = "quickstack"
 
@@ -15,19 +18,14 @@ minecraft {
 
 processResources
 {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+    inputs.property "modVersion", modVersion
+    inputs.property "mcVersion", mcVersion
 
-    // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'modVersion':modVersion, 'mcVersion':mcVersion
     }
-        
-    // copy everything else, thats not the mcmod.info
+
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }

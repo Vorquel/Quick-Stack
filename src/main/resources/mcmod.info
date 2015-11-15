@@ -3,8 +3,8 @@
   "modid": "QuickStack",
   "name": "Quick Stack",
   "description": "Now you can quick stack to chests like Terraria!",
-  "version": "${modVersion}",
-  "mcversion": "${mcVersion}",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": [

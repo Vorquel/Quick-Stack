@@ -3,7 +3,7 @@ plugins {
 }
 
 def mcVersion = "1.8.0"
-def modVersion = "0.1.0"
+def modVersion = "0.2.0"
 
 version = mcVersion + '-' + modVersion
 group = "vorquel.mod.quickstack"

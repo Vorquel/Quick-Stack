@@ -1,10 +1,9 @@
 package vorquel.mod.quickstack;
 
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.server.MinecraftServer;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
 public class MessageQuickStack implements IMessage{
     
@@ -20,7 +19,7 @@ public class MessageQuickStack implements IMessage{
         
         @Override
         public IMessage onMessage(MessageQuickStack message, final MessageContext ctx) {
-            MinecraftServer.getServer().addScheduledTask(new QuickStackTask(ctx.getServerHandler().playerEntity));
+            new QuickStackTask(ctx.getServerHandler().playerEntity).run();
             return null;
         }
     }

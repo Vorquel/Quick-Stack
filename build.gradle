@@ -1,19 +1,33 @@
-plugins {
-    id "net.minecraftforge.gradle.forge" version "2.0.2"
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
 }
 
-def mcVersion = "1.8.0"
-def modVersion = "0.2.0"
+apply plugin: 'forge'
+
+def mcVersion = "1.7.0"
+def modVersion = "0.1.0"
 
 version = mcVersion + '-' + modVersion
 group = "vorquel.mod.quickstack"
 archivesBaseName = "quickstack"
 
 minecraft {
-    version = "1.8-11.14.4.1563"
+    version = "1.7.10-10.13.4.1558-1.7.10"
     runDir = "run"
-    mappings = "stable_17"
-    makeObfSourceJar = false
+    mappings = "stable_12"
 }
 
 processResources

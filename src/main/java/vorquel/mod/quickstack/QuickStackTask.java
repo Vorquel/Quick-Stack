@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-@SuppressWarnings("unchecked")
 class QuickStackTask implements Runnable {
     
     private EntityPlayerMP player;
@@ -30,7 +29,7 @@ class QuickStackTask implements Runnable {
     public void run() {
         World world = player.worldObj;
         for(IInteractionObject interactionObject : nearbyInteractiveObjects(world, player.getPosition()))
-            quickStack(player.inventory.mainInventory, player, interactionObject);
+            quickStack(player.inventory.mainInventory, interactionObject);
         player.inventory.markDirty();
     }
     
@@ -49,7 +48,7 @@ class QuickStackTask implements Runnable {
         return list;
     }
     
-    private void quickStack(ItemStack[] stacks, EntityPlayerMP player, IInteractionObject interactionObject) {
+    private void quickStack(ItemStack[] stacks, IInteractionObject interactionObject) {
         Container container = interactionObject.createContainer(nullPlayer.inventory, nullPlayer);
         for(int i = 9; i < stacks.length; ++i) {
             if(stacks[i] != null)
@@ -58,7 +57,7 @@ class QuickStackTask implements Runnable {
     }
     
     private ItemStack findEqual(Container container, ItemStack stack) {
-        for(Slot slot : (List<Slot>) container.inventorySlots) {
+        for(Slot slot : container.inventorySlots) {
             if(slot.inventory instanceof InventoryPlayer)
                 continue;
             ItemStack currentStack = slot.getStack();
@@ -69,7 +68,7 @@ class QuickStackTask implements Runnable {
     }
     
     private ItemStack findPlacement(Container container, ItemStack stack) {
-        for(Slot slot : (List<Slot>) container.inventorySlots) {
+        for(Slot slot : container.inventorySlots) {
             if(slot.inventory instanceof InventoryPlayer)
                 continue;
             ItemStack currentStack = slot.getStack();
